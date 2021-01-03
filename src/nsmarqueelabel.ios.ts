@@ -1,22 +1,16 @@
-import { CSSType } from "tns-core-modules/ui/text-base";
-import { Label as LabelDefinition } from "tns-core-modules/ui/label";
+import { CSSType } from '@nativescript/core/ui';
+import { Label as LabelDefinition } from '@nativescript/core/ui/label';
 
-@CSSType("NSMarqueeLabel")
+@CSSType('MarqueeLabel')
 export class NSMarqueeLabel extends LabelDefinition {
-  nativeViewProtected: PaddableMarqueeLabel;
-
   public createNativeView() {
-    const view = PaddableMarqueeLabel.new();
+    const view = MarqueeLabel.new();
     view.scrollRate = 24.0;
     view.fadeLength = 6.0;
-    view.userInteractionEnabled = true;
 
     return view;
   }
-
-  get ios(): PaddableMarqueeLabel {
-    return this.nativeTextViewProtected;
-  }
 }
+
 // @ts-ignore
 NSMarqueeLabel.prototype.recycleNativeView = "auto";
